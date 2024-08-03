@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 
-public class PeopleArrayList<ElementType> extends ArrayList<ElementType> {
+public class PeopleArrayList<T extends Comparable<T>> extends ArrayList<T>{
     // this is a relatively efficient Bubble Sort algorithm (as Bubble Sorts go).
     //It recognises that after each pass of the outer loop an additional right-most element
     //is in the correct position and can be ignored
 
     public void bubbleSort() {
         int iCount, jCount;
-        Comparable elementAtjCount, elementAtjCountPlus;
+        T elementAtjCount, elementAtjCountPlus;
         for (iCount = 0; iCount < size(); iCount++) {
 
             for (jCount = 0; jCount < size() - 1 - iCount; jCount++) {
-                elementAtjCount = (Comparable) get(jCount);
-                elementAtjCountPlus = (Comparable) get(jCount + 1);
+                elementAtjCount = get(jCount);
+                elementAtjCountPlus = get(jCount + 1);
 
                 if (elementAtjCount.compareTo(elementAtjCountPlus) > 0) {
                     //swap element on postion jCount with element on position jCount + 1
@@ -24,8 +24,8 @@ public class PeopleArrayList<ElementType> extends ArrayList<ElementType> {
 
     public void swap(int inPos1, int inPos2) {
         //Create two objects that will store the info from the two positions
-        ElementType objPos1 = get(inPos1);
-        ElementType objPos2 = get(inPos2);
+        T objPos1 = get(inPos1);
+        T objPos2 = get(inPos2);
         //Remove element from position 1
         remove(inPos1);
         //Insert objPos2 into position 1
@@ -45,8 +45,8 @@ public class PeopleArrayList<ElementType> extends ArrayList<ElementType> {
             int iCount;
             bMoreSwaps = false;
             for (iCount = 0; iCount < size() - 1; iCount++) {
-                Comparable elementAtiCount = (Comparable) get(iCount);
-                Comparable elementAtiCountPlus = (Comparable) get(iCount + 1);
+                T elementAtiCount = get(iCount);
+                T elementAtiCountPlus = get(iCount + 1);
 
                 if (elementAtiCount.compareTo(elementAtiCountPlus) > 0) {
                     swap(iCount, iCount + 1);

@@ -31,23 +31,19 @@ public class readPeopleData {
         System.out.println(people[0] == people[1]);
 
         PeopleArrayList<People> peopleList = new PeopleArrayList<>();
-        for (People person : people) {
-            if (person != null) {
-                peopleList.add(person);
-            }
-        }
+        peopleList.addAll(Arrays.asList(people));
 
         peopleList.bubbleSort();
 
-        // выводим первые 10 отсортированных записей для проверки
-        for (int i = 0; i < 10; i++) {
+        // print first 100 for testing
+        for (int i = 0; i < 100; i++) {
             System.out.println(peopleList.get(i));
         }
     }
 
 }
 
-class People implements Comparable<Object> {
+class People implements Comparable<People> {
     private int iId;
     private String sName;
     private String sSurname;
@@ -67,7 +63,7 @@ class People implements Comparable<Object> {
 
     // the objects can be compared when sorting/searching
     @Override
-    public int compareTo(Object obj) {
+    public int compareTo(People obj) {
 
         /*
 		Edit this section so it compares the appropriate
